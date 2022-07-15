@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>inferTypes</title>
+	<meta charset="UTF-8" />
+	<script src="https://cdn.jsdelivr.net/npm/@rawgraphs/rawgraphs-core"></script>
+</head>
+
+<body>
+<div id="app"></div>
+
+<script>
+	const inferTypes = raw.inferTypes;
+	// If the majority of data points can be casted to a type, that type is chosen for the column.
+
+	const data1 = [
+		{a: 1, b: "300"},
+		{a: 2000, b: "400"},
+		{a: 1, b: "str"},
+	]
+	console.log(  inferTypes(data1)  ); // {a: 'number', b: 'number'}
+
+	const data2 = [
+		{a: 1, b: "cup"},
+		{a: 2000, b: "coffee"},
+		{a: 1, b: "tea"},
+	]
+	console.log(  inferTypes(data2)  ); // {a: 'number', b: 'string'}
+
+	const data3 = [
+		{ a: 1, b: "2021-01-01" },
+		{ a: 2000, b: "2011-07-01" },
+		{ a: 1, b: "2000-05-02" },
+	];
+
+	const detectedTypes = inferTypes(data3, {});
+
+	console.log(detectedTypes); // {a: 'number', b: {type: 'date', dateFormat: 'YYYY-MM-DD'}}
+
+</script>
+</body>
+</html>

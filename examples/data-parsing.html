@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>parseDataset</title>
+	<meta charset="UTF-8" />
+	<script src="https://cdn.jsdelivr.net/npm/@rawgraphs/rawgraphs-core"></script>
+</head>
+
+<body>
+<div id="app"></div>
+
+<script>
+	const parseDataset = raw.parseDataset;
+
+	const data = [
+		{ a: 1, b: "2001-01-01" },
+		{ a: 2, b: "no str" },
+		{ a: 1, b: "atr" },
+	];
+
+	// detect type by majority
+	const { dataset, dataTypes, errors } = parseDataset(data);
+
+	console.log(dataset, dataTypes, errors);
+</script>
+</body>
+</html>

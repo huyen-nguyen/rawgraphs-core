@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<script src="https://cdn.jsdelivr.net/npm/@rawgraphs/rawgraphs-core"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@rawgraphs/rawgraphs-charts"></script>
+</head>
+
+<body>
+<div id="app"></div>
+
+<script>
+	// 1. imports: chart factory function and chart implementation
+	const chart = raw.chart;
+	const bubblechart = rawcharts.bubblechart;
+
+	// 2. defining data
+	const data = [{age: 10, height: 130}, {age: 18, height: 170}];
+
+	// 3. defining mapping
+	const mapping = {x:{value: "age"}, y: {value: "height"}};
+
+	// 4. creating a chart instance
+	const viz = new chart(bubblechart, {data, mapping});
+
+	// 5. rendering to DOM
+	const targetNode = document.getElementById(("app"));
+	viz.renderToDOM(targetNode);	// use renderToDOM method of the chart instance
+
+</script>
+</body>
+</html>
